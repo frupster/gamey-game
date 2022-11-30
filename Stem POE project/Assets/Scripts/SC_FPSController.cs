@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SC_FPSController : MonoBehaviour
 {
+   
     //allows you to customize the movements of the player
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -87,4 +88,5 @@ public class SC_FPSController : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
     }
+
 }
