@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    private Mushroom mushroom;
     private Camera cam;
     [SerializeField]
     private float distance = 3f;
@@ -13,6 +14,7 @@ public class PlayerInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mushroom = GameObject.Find("Mushroom").GetComponent<Mushroom>();
         cam = GetComponent<SC_FPSController>().playerCamera;
         playerUI = GetComponent<PlayerUI>();
     }
@@ -30,6 +32,12 @@ public class PlayerInteract : MonoBehaviour
             if(hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 playerUI.UpdateText(hitInfo.collider.GetComponent<Interactable>().promptMessage);
+
+                if (Input.GetKeyDown(KeyCode.E)) 
+                {
+                    Debug.Log("collected");
+                    mushroom.interacted = true;
+                }
             }
 
         }

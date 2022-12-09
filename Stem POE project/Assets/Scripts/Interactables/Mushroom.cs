@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mushroom : Interactable
 {
+
+    public bool interacted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,10 @@ public class Mushroom : Interactable
     // Update is called once per frame
     void Update()
     {
-        
+        if (interacted == true)
+        {
+            transform.position = new Vector3(0, -100, 0);
+        }
     }
 
     //this function is where we will design our interaction using code
