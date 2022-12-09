@@ -37,6 +37,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     Debug.Log("collected");
                     mushroom.interacted = true;
+
                 }
             }
 

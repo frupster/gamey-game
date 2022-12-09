@@ -15,5 +15,7 @@ public class PlayerUI : MonoBehaviour
    public void UpdateText(string promptMessage)
     {
         promptText.text = promptMessage;
+        GetComponent<Mushroom>();
+
     }
 }
