@@ -18,13 +18,13 @@ public class GrabbyHands : MonoBehaviour
     {
        if( bool_script.ableToBeInteracted == true)
         {
-            //Debug.Log("interactable");
-            //transform.position = new Vector3(0, 8, 0);
+            
+            transform.position = new Vector3(960, 580, 0);
         }
        else
         {
-            //Debug.Log("not interactable");
-           // transform.position = new Vector3(0, 100, 0);
+            
+            transform.position = new Vector3(0, -100, 0);
         }
     }
 }

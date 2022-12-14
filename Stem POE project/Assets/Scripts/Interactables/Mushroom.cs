@@ -28,9 +28,5 @@ public class Mushroom : Interactable
         }
     }
 
-    //this function is where we will design our interaction using code
-    protected override void Interact()
-    {
-        Debug.Log("Interacted with " + gameObject.name);
-    }
+
 }
