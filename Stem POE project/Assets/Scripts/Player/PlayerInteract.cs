@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    
     private Mushroom mushroom;
+    private Mushroom1 mushroom1;
     private Camera cam;
 
     //[SerializeField]
@@ -21,15 +23,19 @@ public class PlayerInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        mushroom1 = GameObject.Find("Mushroom1").GetComponent<Mushroom1>();
         mushroom = GameObject.Find("Mushroom").GetComponent<Mushroom>();
         cam = GetComponent<SC_FPSController>().playerCamera;
         playerUI = GetComponent<PlayerUI>();
+
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         playerUI.UpdateText(string.Empty);
         //create ray at the center of the camera, shooting outwards
         /* Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -76,15 +82,31 @@ public class PlayerInteract : MonoBehaviour
                 ableToBeInteracted = true;
                 playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
                 Debug.Log("interactable");
-
+                
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Debug.Log("collected");
                     mushroom.interacted = true;
+                   
+                }
+            }
+            if (hit.collider.tag == "Mushroom1")
+            {
+                ableToBeInteracted = true;
+                playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
+                Debug.Log("interactable");
+
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log("collected");
+                    mushroom1.interacted1 = true;
 
                 }
             }
+
+
             if (hit.collider.tag != "Mushroom")
             {
                 ableToBeInteracted = false;

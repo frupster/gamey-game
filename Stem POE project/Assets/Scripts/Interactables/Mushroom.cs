@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Mushroom : Interactable
 {
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip pickupSound;
+
     public bool interacted = false;
     // Start is called before the first frame update
     void Start()
@@ -21,10 +23,10 @@ public class Mushroom : Interactable
     {
         if (interacted == true)
         {
-            
-            
-            transform.position = new Vector3(0, -100, 0);
 
+            audioSource.PlayOneShot(pickupSound);
+            transform.position = new Vector3(0, -100, 0);
+            interacted = false;
         }
     }
 

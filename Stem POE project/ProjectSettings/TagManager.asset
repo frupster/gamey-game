@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeathBox
   - Mushroom
+  - Mushroom1
   layers:
   - Default
   - TransparentFX
