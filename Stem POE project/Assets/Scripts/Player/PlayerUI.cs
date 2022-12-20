@@ -20,5 +20,6 @@ public class PlayerUI : MonoBehaviour
         
         GetComponent<Mushroom>();
         GetComponent<Mushroom1>();
+        GetComponent<Mushroom2>();
     }
 }

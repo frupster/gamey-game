@@ -7,6 +7,9 @@ TagManager:
   - DeathBox
   - Mushroom
   - Mushroom1
+  - Mushroom2
+  - Mushroom3
+  - Mushroom4
   layers:
   - Default
   - TransparentFX
