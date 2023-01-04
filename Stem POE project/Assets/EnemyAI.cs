@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+
     //Patrolling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -19,12 +20,13 @@ public class EnemyAI : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    public bool hit = false;
 
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-
+    
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-       
+        
     }
     private void Update()
     {
@@ -89,7 +91,7 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             //attack code here
-
+            hit = true;
             animator.SetBool("isAttacking", true);
 
 

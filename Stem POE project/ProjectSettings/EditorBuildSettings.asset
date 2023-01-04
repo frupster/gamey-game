@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 7e995bbde3c3f5d4f85df851dafae3ae
+  - enabled: 1
     path: Assets/Scenes/GAME!.unity
     guid: 5af012a8b7991a84fb99a854db8dfc21
+  - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: a32ae41e89d43ec41bd92b5bbb660659
+  - enabled: 1
+    path: Assets/Scenes/WaterDeath.unity
+    guid: 4d364f236dc10124d97dd3db4968bce2
   m_configObjects: {}

@@ -7,6 +7,7 @@ public class DeathBox : MonoBehaviour
     public GameObject deathBox;
     public Vector3 SpawnPoint;
     public bool respawn = false;
+    public bool drowned = false;
     SC_FPSController cc;
     //public GameObject SpawnPoint;
     // Start is called before the first frame update
@@ -30,7 +31,8 @@ public class DeathBox : MonoBehaviour
         {
             Debug.Log("touched deathbox");
             //GetComponent<SC_FPSController>().enabled = false;
-            
+            drowned = true;
+
             cc.enabled = false;
             respawn = true;
             transform.position = SpawnPoint;
