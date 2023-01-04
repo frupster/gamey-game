@@ -7,6 +7,8 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI promptText;
+
+   public TextMeshProUGUI itemCount;
     
     // Start is called before the first frame update
     void Start()
@@ -21,5 +23,10 @@ public class PlayerUI : MonoBehaviour
         GetComponent<Mushroom>();
         GetComponent<Mushroom1>();
         GetComponent<Mushroom2>();
+    }
+
+    public void UpdateCount(string itemMessage)
+    {
+        itemCount.text = itemMessage;
     }
 }
