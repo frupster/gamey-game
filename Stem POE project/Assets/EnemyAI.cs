@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
+    Animator animator;
     public NavMeshAgent agent;
 
     public Transform player;
@@ -23,11 +24,19 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+       
     }
     private void Update()
     {
@@ -69,16 +78,19 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        animator.SetBool("isAttacking", true);
     }
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
         transform.LookAt(player);
+        
 
         if (!alreadyAttacked)
         {
             //attack code here
 
+            animator.SetBool("isAttacking", true);
 
 
             alreadyAttacked = true;
