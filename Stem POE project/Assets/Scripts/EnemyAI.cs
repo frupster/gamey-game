@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    private PlayerInteract playerInteract;
+
 
     //Patrolling
     public Vector3 walkPoint;
@@ -30,6 +32,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip ringing;
 
+    public Vector3 spawnPoint;
+
+
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -41,6 +47,7 @@ public class EnemyAI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        playerInteract = GameObject.Find("Player").GetComponent<PlayerInteract>();
        // if (audioSource == null) Debug.Log("audio source is null");
         
     }
@@ -53,6 +60,16 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+
+        if (playerInteract.flipped == true)
+        {
+            transform.position = spawnPoint;
+            walkPointSet = false;
+            playerInSightRange = false;
+            playerInAttackRange = false;
+            Patroling();
+        }
+
 
     }
     private void Patroling()
@@ -91,7 +108,7 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        animator.SetBool("isAttacking", true);
+        //animator.SetBool("isAttacking", true);
         audioSource.PlayOneShot(ringing);
         chased = true;
     }

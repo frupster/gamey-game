@@ -7,13 +7,16 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    
+    public bool interactableSwitch = false;
+    public bool flipped = false;
+
     private Mushroom mushroom;
     private Mushroom1 mushroom1;
     private Mushroom2 mushroom2;
     private Mushroom3 mushroom3;
     private Mushroom4 mushroom4;
     private Camera cam;
+    private Switch lever;
 
     //[SerializeField]
     //private float distance = 3f;
@@ -27,6 +30,7 @@ public class PlayerInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lever = GameObject.Find("Lever Switch").GetComponent<Switch>();
         mushroom4 = GameObject.Find("Mushroom4").GetComponent<Mushroom4>();
         mushroom3 = GameObject.Find("Mushroom3").GetComponent<Mushroom3>();
         mushroom2 = GameObject.Find("Mushroom2").GetComponent<Mushroom2>();
@@ -84,6 +88,28 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, range))
         {
+            if (hit.collider.tag == "Switch" && flipped == false)
+            {
+                interactableSwitch = true;
+                
+                Debug.Log("interactable");
+
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log("flipped");
+                    flipped = true;
+                    
+                    
+                }
+            }
+            else interactableSwitch = false;
+
+
+
+
+
+
             if (hit.collider.tag == "Mushroom")
             {
                 ableToBeInteracted = true;
