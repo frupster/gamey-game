@@ -23,10 +23,17 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     private LayerMask mask;
     private PlayerUI playerUI;
-    
+
     public float range = 5f;
     public bool ableToBeInteracted = false;
     public int mushroomCount = 5;
+
+    
+    Vector3 spawnPoint = new Vector3(38.73f, 5.08f, 3.52f);
+
+    [SerializeField]
+   // private GameObject prefab = null; // assign Cube prefab to this in Editor
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +46,15 @@ public class PlayerInteract : MonoBehaviour
         cam = GetComponent<SC_FPSController>().playerCamera;
         playerUI = GetComponent<PlayerUI>();
 
-       
     }
+
+
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
 
         playerUI.UpdateText(string.Empty);
         //create ray at the center of the camera, shooting outwards
@@ -91,8 +100,8 @@ public class PlayerInteract : MonoBehaviour
             if (hit.collider.tag == "Switch" && flipped == false)
             {
                 interactableSwitch = true;
-                
-                Debug.Log("interactable");
+
+                //Debug.Log("interactable");
 
 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -100,95 +109,98 @@ public class PlayerInteract : MonoBehaviour
                     Debug.Log("flipped");
                     flipped = true;
                     
-                    
+
+
                 }
-            }
-            else interactableSwitch = false;
+                else interactableSwitch = false;
 
 
 
 
 
 
-            if (hit.collider.tag == "Mushroom")
-            {
-                ableToBeInteracted = true;
-                playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
-                //Debug.Log("interactable");
-                
-
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.tag == "Mushroom")
                 {
-                    Debug.Log("collected");
-                    mushroom.interacted = true;
-                    mushroomCount--;
+                    ableToBeInteracted = true;
+                    playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
+                    //Debug.Log("interactable");
+
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("collected");
+                        mushroom.interacted = true;
+                        mushroomCount--;
+                    }
                 }
-            }
-            if (hit.collider.tag == "Mushroom1")
-            {
-                ableToBeInteracted = true;
-                playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
-                //Debug.Log("interactable");
-
-
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.tag == "Mushroom1")
                 {
-                    Debug.Log("collected");
-                    mushroom1.interacted1 = true;
-                    mushroomCount--;
+                    ableToBeInteracted = true;
+                    playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
+                    //Debug.Log("interactable");
+
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("collected");
+                        mushroom1.interacted1 = true;
+                        mushroomCount--;
+                    }
                 }
-            }
-            if (hit.collider.tag == "Mushroom2")
-            {
-                ableToBeInteracted = true;
-                playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
-                //Debug.Log("interactable");
-
-
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.tag == "Mushroom2")
                 {
-                    Debug.Log("collected");
-                    mushroom2.interacted2 = true;
-                    mushroomCount--;
+                    ableToBeInteracted = true;
+                    playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
+                    //Debug.Log("interactable");
+
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("collected");
+                        mushroom2.interacted2 = true;
+                        mushroomCount--;
+                    }
                 }
-            }
-            if (hit.collider.tag == "Mushroom3")
-            {
-                ableToBeInteracted = true;
-                playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
-                //Debug.Log("interactable");
-
-
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.tag == "Mushroom3")
                 {
-                    Debug.Log("collected");
-                    mushroom3.interacted3 = true;
-                    mushroomCount--;
+                    ableToBeInteracted = true;
+                    playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
+                    //Debug.Log("interactable");
+
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("collected");
+                        mushroom3.interacted3 = true;
+                        mushroomCount--;
+                    }
                 }
-            }
-            if (hit.collider.tag == "Mushroom4")
-            {
-                ableToBeInteracted = true;
-                playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
-                //Debug.Log("interactable");
-
-
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.tag == "Mushroom4")
                 {
-                    Debug.Log("collected");
-                    mushroom4.interacted4 = true;
-                    mushroomCount--;
+                    ableToBeInteracted = true;
+                    playerUI.UpdateText(hit.collider.GetComponent<Interactable>().promptMessage);
+                    //Debug.Log("interactable");
+
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("collected");
+                        mushroom4.interacted4 = true;
+                        mushroomCount--;
+                    }
                 }
+
+                if (hit.collider.tag != "Mushroom")
+                {
+                    ableToBeInteracted = false;
+                    //Debug.Log("not interactable");
+                }
+
+
+
             }
-
-            if (hit.collider.tag != "Mushroom" )
-            {
-                ableToBeInteracted = false;
-                //Debug.Log("not interactable");
-            }
-
-
-
         }
+
     }
 }
+

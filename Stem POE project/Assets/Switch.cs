@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
+    public GameObject enemy;
+    Vector3 spawnPoint = new Vector3(38.73f, 5.08f, 3.52f);
     Animator animator;
     PlayerInteract playerInteract;
 
@@ -20,6 +22,12 @@ public class Switch : MonoBehaviour
         if (playerInteract.flipped == true)
         {
             animator.SetBool("SwitchFlipped", true);
+
+           
+          
+            
+
+
         }
     }
 }

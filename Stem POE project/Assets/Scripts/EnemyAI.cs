@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 public class EnemyAI : MonoBehaviour
 {
     Animator animator;
@@ -32,9 +33,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip ringing;
 
-    public Vector3 spawnPoint;
+    //private Switch lever;
 
+    //public Vector3 spawnPoint;
+    public GameObject enemy;
+    Vector3 spawnPoint = new Vector3(38.73f, 5.08f, 3.52f);
 
+    
+    public GameObject prefab;
 
     private void Awake()
     {
@@ -48,7 +54,9 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         playerInteract = GameObject.Find("Player").GetComponent<PlayerInteract>();
-       // if (audioSource == null) Debug.Log("audio source is null");
+        // if (audioSource == null) Debug.Log("audio source is null");
+
+        //lever = GameObject.Find("Lever Switch").GetComponent<Switch>();
         
     }
     private void Update()
@@ -61,13 +69,14 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
-        if (playerInteract.flipped == true)
+       if (playerInteract.flipped == true)
         {
-            transform.position = spawnPoint;
-            walkPointSet = false;
-            playerInSightRange = false;
-            playerInAttackRange = false;
-            Patroling();
+            for (int i = 0; i < 4; ++i)
+            {
+                Instantiate(prefab, new Vector3(0, i * 10, 0), Quaternion.identity); // you can directly assign position in Instantiate
+            }
+
+
         }
 
 
@@ -121,7 +130,8 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             //attack code here
-            hit = true;
+            //hit = true;
+            SceneManager.LoadScene("Death");
             animator.SetBool("isAttacking", true);
 
 
@@ -142,4 +152,10 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
+    
+
+
+
+
 }
