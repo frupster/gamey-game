@@ -2271,6 +2271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableSwitch: 0
   flipped: 0
+  flipped1: 0
   mask:
     serializedVersion: 2
     m_Bits: 64
@@ -7928,7 +7929,6 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   ringing: {fileID: 0}
   enemy: {fileID: 0}
-  prefab: {fileID: 0}
 --- !u!136 &1315324881
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17008,8 +17008,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   audioSource: {fileID: 7578186023236869711}
   ringing: {fileID: 8300000, guid: 8e6dfdffee7382749be0df88d8e15009, type: 3}
-  enemy: {fileID: 0}
-  prefab: {fileID: 7578186023236698726}
+  enemy: {fileID: 3530139833099152343, guid: 4cd56488c55b5fd458e2ec11f62fc42e, type: 3}
 --- !u!136 &7578186023236869708
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17055,7 +17054,6 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   ringing: {fileID: 0}
   enemy: {fileID: 0}
-  prefab: {fileID: 0}
 --- !u!108 &7578186023236869710
 Light:
   m_ObjectHideFlags: 0

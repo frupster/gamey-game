@@ -9,6 +9,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public bool interactableSwitch = false;
     public bool flipped = false;
+    public bool flipped1 = false;
 
     private Mushroom mushroom;
     private Mushroom1 mushroom1;
@@ -97,7 +98,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, range))
         {
-            if (hit.collider.tag == "Switch" && flipped == false)
+            if (hit.collider.tag == "Switch" && flipped1 == false)
             {
                 interactableSwitch = true;
 
@@ -108,12 +109,12 @@ public class PlayerInteract : MonoBehaviour
                 {
                     Debug.Log("flipped");
                     flipped = true;
-                    
+
 
 
                 }
                 else interactableSwitch = false;
-
+            }
 
 
 
@@ -202,5 +203,5 @@ public class PlayerInteract : MonoBehaviour
         }
 
     }
-}
+
 

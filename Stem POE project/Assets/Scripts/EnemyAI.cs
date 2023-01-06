@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
     Vector3 spawnPoint = new Vector3(38.73f, 5.08f, 3.52f);
 
     
-    public GameObject prefab;
+    
 
     private void Awake()
     {
@@ -71,11 +71,10 @@ public class EnemyAI : MonoBehaviour
 
        if (playerInteract.flipped == true)
         {
-            for (int i = 0; i < 4; ++i)
-            {
-                Instantiate(prefab, new Vector3(0, i * 10, 0), Quaternion.identity); // you can directly assign position in Instantiate
-            }
-
+            Destroy(gameObject);
+            Instantiate(enemy, spawnPoint, Quaternion.identity);
+          playerInteract.flipped = false;
+            playerInteract.flipped1 = true;
 
         }
 
