@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaterDeath.unity
     guid: 4d364f236dc10124d97dd3db4968bce2
+  - enabled: 1
+    path: Assets/Scenes/WIN.unity
+    guid: a3b50633dcbc06a4196513d652c5cbf1
   m_configObjects: {}

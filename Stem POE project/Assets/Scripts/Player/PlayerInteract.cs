@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -55,42 +56,19 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(mushroomCount == 0)
+        {
+            SceneManager.LoadScene("WIN");
+        }
+
+
+
+
+
 
 
         playerUI.UpdateText(string.Empty);
-        //create ray at the center of the camera, shooting outwards
-        /* Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-         Debug.DrawRay(ray.origin, ray.direction * distance);
-         RaycastHit hitInfo; //variable to store collision information
-
-
-
-             if (Physics.Raycast(ray, out hitInfo,distance,mask))
-         {
-
-             if (hitInfo.collider != null && hitInfo.transform.tag == "Mushroom")
-             {
-                 ableToBeInteracted = true;
-                 playerUI.UpdateText(hitInfo.collider.GetComponent<Interactable>().promptMessage);
-                 Debug.Log("interactable");
-
-
-                 if (Input.GetKeyDown(KeyCode.E))
-                 {
-                     Debug.Log("collected");
-                     mushroom.interacted = true;
-
-                 }
-             }
-             if (hitInfo.collider == null && hitInfo.transform.tag == null )
-             {
-                 ableToBeInteracted = false;
-                 Debug.Log("not interactable");
-
-
-             }
-
-         }*/
+       
 
         Vector3 direction = Vector3.forward;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);

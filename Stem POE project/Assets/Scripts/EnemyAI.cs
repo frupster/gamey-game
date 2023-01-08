@@ -78,7 +78,11 @@ public class EnemyAI : MonoBehaviour
 
         }
 
+       if(playerInteract.mushroomCount == 1)
+        {
 
+            sightRange = 100;
+        }
     }
     private void Patroling()
     {

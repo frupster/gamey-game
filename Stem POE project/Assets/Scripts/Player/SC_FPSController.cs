@@ -22,6 +22,13 @@ public class SC_FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
+    private Animator playerAnimator;
+    private Rigidbody rb;
+    private AudioSource audioSource;
+    public bool inMotion = false;
+    public bool soundOn;
+    [SerializeField] private AudioClip running;
+
 
     //adds a public variable but you can't see or modify it
     //in Unity inspector
@@ -40,6 +47,10 @@ public class SC_FPSController : MonoBehaviour
 
         //press "Escape" when playing the game to access the cursor again
 
+        playerAnimator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+       
     }
 
     void Update()
@@ -86,9 +97,28 @@ public class SC_FPSController : MonoBehaviour
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+
+
+
+
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            if (targetVelocity.x != 0 || targetVelocity.z != 0 && characterController.isGrounded)
+            {
+                playerAnimator.SetBool("isRunning", true);
+                inMotion = true;
+            }
+            else
+            {
+                playerAnimator.SetBool("isRunning", false);
+                inMotion = false;
+            }
         }
 
-       
+        if (inMotion && !audioSource.isPlaying && characterController.isGrounded == true) audioSource.PlayOneShot(running); // if player is moving and audiosource is not playing play it
+        if (inMotion == false && audioSource.isPlaying || characterController.isGrounded == false) audioSource.Stop(); // if player is not moving and audiosource is playing stop it
+
+
     }
 
 }
