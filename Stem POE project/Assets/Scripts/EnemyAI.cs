@@ -80,7 +80,8 @@ public class EnemyAI : MonoBehaviour
 
        if(playerInteract.mushroomCount == 1)
         {
-
+           RenderSettings.fogDensity = 0.02f;
+            RenderSettings.fogColor = Color.red;
             sightRange = 100;
         }
     }
