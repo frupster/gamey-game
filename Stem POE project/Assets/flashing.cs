@@ -32,14 +32,7 @@ public class flashing : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         picture.anchoredPosition = new Vector2(1200, 0);
         yield return new WaitForSeconds(0.6f);
-        picture.anchoredPosition = new Vector2(-36, 0);
-        yield return new WaitForSeconds(0.5f);
-        picture.anchoredPosition = new Vector2(1200, 0);
-        yield return new WaitForSeconds(0.2f);
-        picture.anchoredPosition = new Vector2(-36, 0);
-        yield return new WaitForSeconds(0.9f);
-        picture.anchoredPosition = new Vector2(1200, 0);
-        yield return new WaitForSeconds(0.5f);
+     
         done = true;
     }
 }
