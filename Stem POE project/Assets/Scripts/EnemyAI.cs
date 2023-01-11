@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     private PlayerInteract playerInteract;
 
+    public GameObject skull;
 
     //Patrolling
     public Vector3 walkPoint;
@@ -39,14 +40,14 @@ public class EnemyAI : MonoBehaviour
     public GameObject enemy;
     Vector3 spawnPoint = new Vector3(38.73f, 5.08f, 3.52f);
 
-    
-    
+    public bool second = false;
+    private Skull skeleHead;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-
+        skeleHead = GameObject.Find("skull").GetComponent<Skull>();
     }
 
     private void Start()
@@ -65,10 +66,15 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            skeleHead.chasing = false;
+            Patroling();
+        }
         if (playerInSightRange && !playerInAttackRange)
         {
             chasing = true;
+            skeleHead.chasing = true;
             ChasePlayer();
         }
         else chasing = false;
@@ -78,6 +84,7 @@ public class EnemyAI : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(enemy, spawnPoint, Quaternion.identity);
+            Instantiate(skull, new Vector2 (1000, 1000), Quaternion.identity);
           playerInteract.flipped = false;
             playerInteract.flipped1 = true;
 
@@ -130,6 +137,7 @@ public class EnemyAI : MonoBehaviour
         //animator.SetBool("isAttacking", true);
         audioSource.PlayOneShot(ringing);
         chased = true;
+        
     }
     private void AttackPlayer()
     {

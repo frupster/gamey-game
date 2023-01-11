@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 1233627070062743574}
   - component: {fileID: 1233627070062743575}
   m_Layer: 0
-  m_Name: EnemyClone
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
