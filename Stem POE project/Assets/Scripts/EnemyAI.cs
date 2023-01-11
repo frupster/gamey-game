@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
     private bool chased;
-
+    public bool chasing;
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -66,7 +66,12 @@ public class EnemyAI : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            chasing = true;
+            ChasePlayer();
+        }
+        else chasing = false;
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
        if (playerInteract.flipped == true)
@@ -83,6 +88,7 @@ public class EnemyAI : MonoBehaviour
            RenderSettings.fogDensity = 0.02f;
             RenderSettings.fogColor = Color.red;
             sightRange = 100;
+            
         }
     }
     private void Patroling()
