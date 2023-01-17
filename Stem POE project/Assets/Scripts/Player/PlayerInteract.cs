@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+//using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     public bool interactableSwitch = false;
     public bool flipped = false;
     public bool flipped1 = false;
+
 
     private Mushroom mushroom;
     private Mushroom1 mushroom1;
@@ -32,6 +33,12 @@ public class PlayerInteract : MonoBehaviour
 
     
     Vector3 spawnPoint = new Vector3(38.73f, 5.08f, 3.52f);
+
+
+    //BOAT VARIABLES
+    public bool boatInteractable;
+    public bool oarInteractable;
+    public bool oarCollected;
 
     [SerializeField]
    // private GameObject prefab = null; // assign Cube prefab to this in Editor
@@ -88,11 +95,37 @@ public class PlayerInteract : MonoBehaviour
                     Debug.Log("flipped");
                     flipped = true;
 
-
-
                 }
-                else interactableSwitch = false;
+                
             }
+            else interactableSwitch = false;
+
+            if (hit.collider.tag == "Boat")
+            {
+                boatInteractable = true;
+
+                if(oarCollected == true && Input.GetKeyDown(KeyCode.E))
+                {
+                    SceneManager.LoadScene("Boat Ending");
+                }
+            }
+            else boatInteractable = false;
+
+
+            if (hit.collider.tag == "Oar")
+            {
+                oarInteractable = true;
+
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    oarCollected = true;
+                }
+            }
+            else oarInteractable = false;
+
+
+
+          
 
 
 

@@ -22,7 +22,7 @@ public class DeathControl : MonoBehaviour
             SceneManager.LoadScene("TitleScreen");
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("GAME!");
         }

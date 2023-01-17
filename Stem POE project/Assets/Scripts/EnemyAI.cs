@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(enemy, spawnPoint, Quaternion.identity);
-            Instantiate(skull, new Vector2 (1000, 1000), Quaternion.identity);
+            
           playerInteract.flipped = false;
             playerInteract.flipped1 = true;
 
@@ -100,7 +100,6 @@ public class EnemyAI : MonoBehaviour
     }
     private void Patroling()
     {
-        
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -137,7 +136,6 @@ public class EnemyAI : MonoBehaviour
         //animator.SetBool("isAttacking", true);
         audioSource.PlayOneShot(ringing);
         chased = true;
-        
     }
     private void AttackPlayer()
     {

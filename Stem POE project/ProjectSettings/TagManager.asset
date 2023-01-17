@@ -11,6 +11,8 @@ TagManager:
   - Mushroom3
   - Mushroom4
   - Switch
+  - Boat
+  - Oar
   layers:
   - Default
   - TransparentFX
